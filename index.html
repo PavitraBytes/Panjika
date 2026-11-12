@@ -269,7 +269,7 @@ const WD_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturd
 const WS_HI=["रवि","सोम","मंगल","बुध","गुरु","शुक्र","शनि"];
 const WS_EN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const YEAR=2027;
-const APP_VERSION="0.9";
+const APP_VERSION="0.9.1";
 const $=id=>document.getElementById(id);
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 
@@ -482,7 +482,7 @@ function renderReader(){
   let last=null, anyFb=false, body="";
   vs.forEach(v=>{const [c,n,t,xr,fb]=v;if(fb)anyFb=true;
     if(multi&&c!==last){body+=`<span class="ch">${isHi?"अध्याय":"Chapter"} ${c}</span>`;last=c}
-    body+=`<p><sup>${n}</sup>${fb?'<span class="fb" lang="en">':''}${esc(t)}${fb?'</span>':''}${xr?` <span class="xr">(${esc(xr)})</span>`:""}</p>`});
+    body+=`<p><sup>${n}</sup>${fb?'<span class="fb" lang="en">':''}${esc(t)}${fb?'</span>':''}</p>`});
   if(!vs.length) body=`<p class="empty">${T("पाठ उपलब्ध नहीं है — Bible App में खोलें।","Text not available — open it in the Bible App.")}</p>`;
   const L=LINKS[r.en]||{};
   const link=isHi?(L.hi||L.en):(L.en||L.hi);
@@ -496,11 +496,11 @@ function renderReader(){
     `<button class="ib" data-act="save" aria-pressed="${sv}" aria-label="${sv?T("सहेजा गया — हटाएँ","Saved — remove"):T("सहेजें","Save")}">${sv?IC.markOn:IC.mark}</button>`+
     `<button class="ib aa" data-act="size" aria-label="${T("अक्षर का आकार बदलें","Change text size")}">${["Aa","Aa+","Aa++"][size]}</button></div>`+
     `<div class="seg" role="group" aria-label="${T("पाठ की भाषा","Text language")}"><button data-lang="hi" aria-pressed="${isHi}">हिंदी</button><button data-lang="en" aria-pressed="${!isHi}">English</button></div>`+
-    `<div class="rbody" id="rbody"><div class="en">${esc(isHi?r.en:r.hi)} · ${isHi?"इंडियन रिवाइज्ड वर्जन (IRV)":"King James Version"}</div>`+
+    `<div class="rbody" id="rbody">`+
     (r.note?`<div class="fix">${esc(r.note)}</div>`:"")+
     (isHi&&anyFb?`<div class="fix">${T("कुछ पदों का हिंदी (IRV) पाठ उपलब्ध नहीं था; वे पद अंग्रेज़ी (KJV) में तिरछे अक्षरों में दिखाए गए हैं।","Some verses were not available in Hindi (IRV); they are shown in English (KJV) in italics.")}</div>`:"")+
     `<div class="verses" lang="${isHi?"hi":"en"}" style="font-size:${SIZES[size]}px;line-height:${isHi?1.8:1.65}">${body}</div>`+
-    `<div class="lic">${isHi?`हिंदी पाठ: Indian Revised Version (IRV) Hindi 2019 © Bridge Connectivity Solutions Pvt. Ltd., <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>। कोष्ठक में धूसर अंश IRV के संदर्भ हैं।`:"English text: King James Version (public domain)."}</div></div>`+
+    `</div>`+
     `<div class="rfoot">`+
       (r.d?`<button class="done-btn" data-act="done" aria-pressed="${done}">${IC.check}${done?T("पढ़ लिया","Read"):T("पढ़ लिया चिह्नित करें","Mark as read")}</button>`:"")+
       (link?`<a class="app-btn" href="${esc(link)}" target="_blank" rel="noopener">${isHi?T("Bible App में खोलें · Hindi OV","Open in Bible App · Hindi OV"):T("Bible App में खोलें · NIV","Open in Bible App · NIV")}</a>`:"")+
@@ -584,7 +584,7 @@ function renderSettings(){
       `<span>Version ${APP_VERSION}${APP_VERSION.startsWith("0.")?" (beta)":""}</span>`+
       `<span class="made">Handcrafted with love by PavitraBytes</span>`+
       `<hr class="sep">`+
-      `<span>Hindi text: Indian Revised Version (IRV) Hindi 2019, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>English: King James Version (public domain).<br>“Open in Bible App” opens bible.com.</span></div></div>`+
+      `<span>Hindi text: Indian Revised Version (IRV) Hindi 2019 © Bridge Connectivity Solutions Pvt. Ltd., <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> (cross-references omitted).<br>English: King James Version (public domain).<br>“Open in Bible App” opens bible.com.</span></div></div>`+
    `</div>`;
   el.classList.remove("hide");
 }
