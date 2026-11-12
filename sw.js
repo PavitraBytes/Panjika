@@ -1,5 +1,5 @@
 // Panjika offline cache. Bump VERSION whenever index.html changes so phones pick up the update.
-const VERSION = 'panjika-v2.2-1';
+const VERSION = 'panjika-v2.3-1';
 const FILES = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './ios-install.js'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES.map(f => new Request(f, {cache: 'reload'})))).then(() => self.skipWaiting()));

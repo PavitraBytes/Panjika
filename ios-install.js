@@ -59,6 +59,8 @@
         '<br><span class="en">If asked, tap Settings and turn on “Allow from this source”, then go back.</span></span></li>' +
       '<li><span class="n">3</span><span><b>Install</b> दबाएँ, फिर पंजिका ऐप खोलें' +
         '<br><span class="en">Tap Install, then open Panjika from your apps. (Android 7.0 or newer)</span></span></li>' +
+      '<li><span class="n">!</span><span>पहले से पुराना पंजिका ऐप है और “App not installed” आए, तो पुराना ऐप हटाकर (Uninstall) फिर से इंस्टॉल करें।' +
+        '<br><span class="en">Already have an older Panjika and see “App not installed”? Uninstall the old app first, then install again.</span></span></li>' +
       '</ol><div style="height:12px"></div>' +
       '<button class="ok">बाद में · Later</button></div>'
     :
