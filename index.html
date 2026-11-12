@@ -225,6 +225,8 @@ nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:700}
 .about{font-size:14px;color:var(--muted);line-height:1.6}
 .about b{color:var(--ink);font-size:16px}
 .about a{color:var(--accent)}
+.about .made{color:var(--accent);font-weight:600;font-size:15px}
+.about .sep{width:100%;border:0;border-top:1px solid var(--line);margin:4px 0}
 .srow{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .switch{width:56px;height:32px;border-radius:16px;border:0;background:var(--ring);position:relative;flex:none;padding:0}
 .switch i{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:13px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
@@ -267,7 +269,7 @@ const WD_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturd
 const WS_HI=["रवि","सोम","मंगल","बुध","गुरु","शुक्र","शनि"];
 const WS_EN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const YEAR=2027;
-const APP_VERSION="2.1";
+const APP_VERSION="2.2";
 const $=id=>document.getElementById(id);
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 
@@ -578,9 +580,11 @@ function renderSettings(){
     `<div class="sgroup"><h2>${T("डेटा","Data")}</h2><div class="scard"><span class="lbl">${T("पढ़े गए निशान","Read marks")}</span>`+
       `<span class="hint">${T(`अभी ${nRead} पाठ पढ़े हुए चिह्नित हैं। सहेजे गए पाठ नहीं हटेंगे।`,`${nRead} readings are marked as read. Saved readings will not be removed.`)}</span>`+
       `<button class="danger${clearArm?" arm":""}" data-act="sclear" ${nRead?"":"disabled"}>${clearArm?T("पक्का? फिर से दबाएँ","Sure? Tap again"):T("सभी निशान हटाएँ","Clear all read marks")}</button></div></div>`+
-    `<div class="sgroup"><h2>${T("जानकारी","About")}</h2><div class="scard about"><b>${T("पंजिका · GEL चर्च","Panjika · GEL Church")}</b>`+
-      `<span>${T("संस्करण","Version")} ${APP_VERSION}</span>`+
-      `<span>${T("हिंदी पाठ","Hindi text")}: Indian Revised Version (IRV) Hindi 2019, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>English: King James Version (public domain).<br>${T("“Bible App में खोलें” bible.com पर खुलता है।","“Open in Bible App” opens bible.com.")}</span></div></div>`+
+    `<div class="sgroup"><h2>About</h2><div class="scard about" lang="en"><b>Panjika</b>`+
+      `<span>Version ${APP_VERSION}</span>`+
+      `<span class="made">Handcrafted with love by PavitraBytes</span>`+
+      `<hr class="sep">`+
+      `<span>Hindi text: Indian Revised Version (IRV) Hindi 2019, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.<br>English: King James Version (public domain).<br>“Open in Bible App” opens bible.com.</span></div></div>`+
    `</div>`;
   el.classList.remove("hide");
 }
